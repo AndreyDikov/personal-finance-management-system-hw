@@ -13,7 +13,6 @@ import ru.sf.personalfinancemanagementsystem.entities.UserEntity;
 import ru.sf.personalfinancemanagementsystem.exceptions.BadLoginOrPasswordException;
 import ru.sf.personalfinancemanagementsystem.exceptions.UserAlreadyExistsException;
 import ru.sf.personalfinancemanagementsystem.exceptions.UserNotFoundException;
-import ru.sf.personalfinancemanagementsystem.mappers.UserMapper;
 import ru.sf.personalfinancemanagementsystem.repositories.UserRepository;
 import ru.sf.personalfinancemanagementsystem.services.AuthenticationService;
 import ru.sf.personalfinancemanagementsystem.services.JwtService;
@@ -55,7 +54,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     @Transactional(readOnly = true)
     public Token issueToken(@NotNull Credentials credentials) {
-        User user = userRepository.findByLogin(credentials.getLogin())
+        UserEntity user = userRepository.findByLogin(credentials.getLogin())
                 .orElseThrow(UserNotFoundException::new);
 
         if (!passwordEncoder.matches(credentials.getPassword(), user.getPasswordHash())) {

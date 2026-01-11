@@ -18,4 +18,7 @@ public class Endpoints {
     public static final String SWAGGER_UI_HTML = SWAGGER_UI + ".html";
     public static final String SWAGGER_UI_ALL = SWAGGER_UI + "/**";
 
+    public static final String CATEGORIES = BASE + "/categories";
+    public static final String CREATE_CATEGORY = CATEGORIES + "/create";
+
 }

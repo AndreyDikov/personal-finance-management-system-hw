@@ -3,8 +3,10 @@ package ru.sf.personalfinancemanagementsystem.domains;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
+import ru.sf.personalfinancemanagementsystem.enums.CategoryKind;
 
-import java.time.Instant;
+import java.math.BigDecimal;
+import java.util.UUID;
 
 
 @Getter
@@ -13,9 +15,12 @@ import java.time.Instant;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Token {
+public class Category {
 
-    String token;
-    Instant expiresAt;
+    UUID id;
+    UUID userId;
+    String name;
+    CategoryKind kind;
+    BigDecimal budgetAmount;
 
 }

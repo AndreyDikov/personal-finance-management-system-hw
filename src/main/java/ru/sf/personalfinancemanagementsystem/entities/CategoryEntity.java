@@ -29,7 +29,7 @@ public class CategoryEntity {
     UUID id;
 
     @Column(name = "user_id", nullable = false)
-    UUID userUuid;
+    UUID userId;
 
     @Column(name = "name", nullable = false)
     String name;

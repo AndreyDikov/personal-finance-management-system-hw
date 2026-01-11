@@ -20,6 +20,6 @@ public interface UserRepository extends JpaRepository<UserEntity, UUID> {
         from users
         where login = :login
     """, nativeQuery = true)
-    Optional<User> findByLogin(String login);
+    Optional<UserEntity> findByLogin(String login);
 
 }

@@ -136,7 +136,7 @@ class AuthenticationServiceImplTest {
             when(credentials.getLogin()).thenReturn(LOGIN);
             when(credentials.getPassword()).thenReturn(BAD_PASSWORD);
 
-            User user = mock(User.class);
+            UserEntity user = mock(UserEntity.class);
             when(user.getPasswordHash()).thenReturn(PASSWORD_HASH);
 
             when(userRepository.findByLogin(LOGIN)).thenReturn(Optional.of(user));
@@ -160,7 +160,7 @@ class AuthenticationServiceImplTest {
 
             UUID userId = UUID.randomUUID();
 
-            User user = mock(User.class);
+            UserEntity user = mock(UserEntity.class);
             when(user.getId()).thenReturn(userId);
             when(user.getLogin()).thenReturn(LOGIN);
             when(user.getPasswordHash()).thenReturn(PASSWORD_HASH);

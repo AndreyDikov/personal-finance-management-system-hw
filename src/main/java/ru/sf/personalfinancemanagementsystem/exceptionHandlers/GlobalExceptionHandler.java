@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import ru.sf.personalfinancemanagementsystem.constants.ValidationMessages;
 import ru.sf.personalfinancemanagementsystem.dto.responses.ErrorResponseDto;
 import ru.sf.personalfinancemanagementsystem.dto.responses.ValidationErrorResponseDto;
-import ru.sf.personalfinancemanagementsystem.exceptions.BadLoginOrPasswordException;
-import ru.sf.personalfinancemanagementsystem.exceptions.UserAlreadyExistsException;
+import ru.sf.personalfinancemanagementsystem.exceptions.*;
 
 import java.util.List;
 
@@ -66,9 +65,20 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.CONFLICT)
     @ExceptionHandler({
             BadLoginOrPasswordException.class,
-            UserAlreadyExistsException.class
+            UserAlreadyExistsException.class,
+            BudgetForIncomeCategoryException.class,
+            CategoryAlreadyExistsException.class
     })
-    public ErrorResponseDto handleShortLinkExceptions(
+    public ErrorResponseDto handlePersonalFinanceManagementConflictExceptions(
+            @NotNull RuntimeException exception
+    ) {
+        return new ErrorResponseDto(exception.getMessage());
+    }
+
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(UserNotFoundException.class)
+    public ErrorResponseDto handlePersonalFinanceManagementNotFoundExceptions(
             @NotNull RuntimeException exception
     ) {
         return new ErrorResponseDto(exception.getMessage());

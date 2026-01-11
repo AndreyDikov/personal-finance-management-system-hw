@@ -28,7 +28,7 @@ public class OperationEntity {
     UUID id;
 
     @Column(name = "category_id", nullable = false)
-    UUID categoryUuid;
+    UUID categoryId;
 
     @Column(name = "amount", nullable = false, precision = 19, scale = 2)
     BigDecimal amount;
